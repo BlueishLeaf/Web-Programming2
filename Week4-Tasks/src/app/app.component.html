@@ -1,0 +1,38 @@
+<form class="ui large form segment">
+    <div class="field">
+        <h1>Question 1</h1>
+        <input type="button" class="ui button" (click)="outputFullName()" value="Submit"/>
+      </div>
+</form>
+
+<form class="ui large form segment">
+    <div class="field">
+        <h1>Question 2</h1>
+      <input type="text" #fName/>
+      <input type="text" #lName/>
+      <input type="button" class="ui button" (click)="outputFNameSName(fName.value,lName.value)" value="Submit">
+      <label>{{ fullNameMsg }}</label>
+    </div>
+</form>
+
+<form class="ui large form segment">
+    <div class="field">
+        <h1>Question 3</h1>
+        <input type="number" #num1/>
+        <input type="number" #num2/>
+        <input type="button" class="ui button" (click)="addNumbers(num1.value,num2.value)" value="Submit">
+        <label>{{ total }}</label>
+      </div>
+</form>
+
+<form class="ui large form segment">
+    <div class="field">
+        <h1>Question 4</h1>
+        <input type="number" #num/>
+        <input type="button" class="ui button" (click)="trueOrFalse(num.value)" value="Submit">
+        <label>{{ isTrueOrFalse }}</label>
+      </div>
+</form>
+
+
+
