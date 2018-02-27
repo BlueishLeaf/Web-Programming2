@@ -11,9 +11,9 @@ export class AppComponent {
   details: Detail[];
   constructor(){
     this.details = [
-      new Detail("killian","12 Sliabh Mor Ballytivnan","S00170465","0857810122","Actually a god"),
-      new Detail("killian","12 Sliabh Mor Ballytivnan","S00170465","0857810122","Actually a god"),
-      new Detail("killian","12 Sliabh Mor Ballytivnan","S00170465","0857810122","Actually a god"),
+      new Detail("killian","12 Sliabh Mor Ballytivnan","S00170465","0857810122","Angularrrrrrrrrrrrr"),
+      new Detail("not killian","12 Sliabh Mor Ballytivnan","S00170465","0857810122","Angularrrrrrrrrrrrr"),
+      new Detail("also not killian","12 Sliabh Mor Ballytivnan","S00170465","0857810122","Angularrrrrrrrrrrrr"),
     ]
   }
 }
