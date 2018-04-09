@@ -4,7 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-import { IResponse } from './book-model/ibook';
+import 'rxjs/add/operator/map';
+import { IResponse, IBook } from './book-model/ibook';
 
 @Injectable()
 export class BooksService {
@@ -13,8 +14,11 @@ export class BooksService {
 
   getBooks(): Observable<IResponse> {
     this._bookUrl = 'https://www.googleapis.com/books/v1/volumes?q=subject:fantasy';
-    console.log("test");
-    return this._http.get<IResponse>(this._bookUrl).do(data => console.log('All: ' + JSON.stringify(data.items))).catch(this.handleError);
+    return this._http.get<IResponse>(this._bookUrl).catch(this.handleError);
+  }
+
+  getBook(id: string): Observable<IBook> {
+    return this.getBooks().map((response: IResponse) => response.items.find(b => b.id === id));
   }
 
   handleError(err: HttpErrorResponse) {

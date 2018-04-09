@@ -1,20 +1,35 @@
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Cover</th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Rating</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let book of books">
-        <td><img class="ui small image" src="{{book.volumeInfo.imageLinks.smallThumbnail}}"></td>
-        <td>{{book.volumeInfo.title}}</td>
-        <td>{{book.volumeInfo.authors}}</td>
-        <td>{{book.volumeInfo.averageRating}}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="ui two column  centered grid">
+  <div class="three wide column">
+    <div>
+      <h1 class="ui header">Filtering</h1>
+      <label for="searchTerm">Search:</label>
+      <div class="ui input focus">
+          <input id="searchTerm" type="text" [(ngModel)]="listFilter">
+      </div>
+      <button class="ui toggle button" (click)="toggleCovers()">Toggle Covers</button>
+      <h3>{{listFilter}}</h3>
+    </div>
+  </div>
+  <div class="column">
+      <div class="table-responsive">
+          <table class="ui striped table" *ngIf="books && books.length">
+            <thead>
+              <tr>
+                <th>Cover</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let book of filteredBooks">
+                <td><img *ngIf="coversEnabled" class="ui small image" src="{{book.volumeInfo.imageLinks.smallThumbnail}}" ></td>
+                <td><a [routerLink]="['/books',book.id]">{{book.volumeInfo.title}}</a></td>
+                <td>{{book.volumeInfo.authors}}</td>
+                <td>{{book.volumeInfo.averageRating}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  </div>
 </div>
