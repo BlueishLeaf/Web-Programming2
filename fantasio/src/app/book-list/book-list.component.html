@@ -1,39 +1,43 @@
-<div class="ui stackable centered grid">
-  <div class="four wide column">
-    <div id="filterSection" class="ui segment">
-      <h1 class="ui large header">Filtering</h1>
-      <div class="ui icon input">
-          <input id="searchTerm" type="text" [(ngModel)]="listFilter" placeholder="Search...">
-          <i class="search icon"></i>
-      </div>
-      <div class="ui buttons">
-        <button class="ui button">Title</button>
-        <button class="ui button">Author</button>
-        <button class="ui button">Rating</button>
-      </div>
-      <button class="ui toggle button" (click)="toggleCovers()">Toggle Covers</button>
-    </div>
-  </div>
-  <div class="six wide column">
-      <div class="table-responsive">
-          <table class="ui striped table" *ngIf="books && books.length">
-            <thead>
-              <tr>
-                <th>Cover</th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Rating</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let book of filteredBooks">
-                <td><img *ngIf="coversEnabled" class="ui small image" src="{{book.volumeInfo.imageLinks.smallThumbnail}}" ></td>
-                <td><a [routerLink]="['/books',book.id]">{{book.volumeInfo.title}}</a></td>
-                <td>{{book.volumeInfo.authors}}</td>
-                <td>{{book.volumeInfo.averageRating}}</td>
-              </tr>
-            </tbody>
-          </table>
+<app-header></app-header>
+<div id="content">
+    <div class="ui stackable centered grid">
+        <div class="four wide column">
+          <div id="filterSection" class="ui segment">
+            <h1 class="ui large header">Filtering</h1>
+            <div class="ui icon input">
+                <input id="searchTerm" type="text" [(ngModel)]="listFilter" placeholder="Search...">
+                <i class="search icon"></i>
+            </div>
+            <div class="ui buttons">
+              <button class="ui button">Title</button>
+              <button class="ui button">Author</button>
+              <button class="ui button">Rating</button>
+            </div>
+            <button class="ui toggle button" (click)="toggleCovers()">Toggle Covers</button>
+          </div>
         </div>
-  </div>
+        <div class="six wide column">
+            <div class="table-responsive">
+                <table class="ui striped table" *ngIf="books && books.length">
+                  <thead>
+                    <tr>
+                      <th>Cover</th>
+                      <th>Title</th>
+                      <th>Author</th>
+                      <th>Rating</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let book of filteredBooks">
+                      <td><img *ngIf="coversEnabled" class="ui small image" src="{{book.volumeInfo.imageLinks.smallThumbnail}}" ></td>
+                      <td><a [routerLink]="['/books',book.id]">{{book.volumeInfo.title}}</a></td>
+                      <td>{{book.volumeInfo.authors}}</td>
+                      <td><div class="ui rating" data-rating="{{book.volumeInfo.rating}}"></div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+        </div>
+      </div>
 </div>
+<script type="text/javascript">$(document).ready(function(){$(".rating").rating();});</script>

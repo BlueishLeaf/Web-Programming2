@@ -8,6 +8,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { BooksService } from './books.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     HomeComponent,
     BookListComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
