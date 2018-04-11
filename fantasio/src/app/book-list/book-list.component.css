@@ -2,6 +2,12 @@ h1 {
     text-align: center;
 }
 
-input[type="text"]{
-    width: 100%;
+.ui button {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
+
+#filterSection {
+    text-align: center;
+}
+

@@ -1,16 +1,20 @@
-<div class="ui two column  centered grid">
-  <div class="three wide column">
+<div class="ui stackable centered grid">
+  <div class="four wide column">
     <div id="filterSection" class="ui segment">
       <h1 class="ui large header">Filtering</h1>
-      <label for="searchTerm">Search:</label>
-      <div class="ui input focus">
-          <input id="searchTerm" type="text" [(ngModel)]="listFilter">
+      <div class="ui icon input">
+          <input id="searchTerm" type="text" [(ngModel)]="listFilter" placeholder="Search...">
+          <i class="search icon"></i>
+      </div>
+      <div class="ui buttons">
+        <button class="ui button">Title</button>
+        <button class="ui button">Author</button>
+        <button class="ui button">Rating</button>
       </div>
       <button class="ui toggle button" (click)="toggleCovers()">Toggle Covers</button>
-      <h3>{{listFilter}}</h3>
     </div>
   </div>
-  <div class="column">
+  <div class="six wide column">
       <div class="table-responsive">
           <table class="ui striped table" *ngIf="books && books.length">
             <thead>
