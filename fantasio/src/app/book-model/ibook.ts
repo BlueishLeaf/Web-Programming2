@@ -11,4 +11,5 @@ export interface IVolumeInfo {
     title: string;
     description: string;
     averageRating: number;
+    authors: string[];
 }

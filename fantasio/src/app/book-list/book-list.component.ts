@@ -49,6 +49,20 @@ export class BookListComponent implements OnInit {
     return this.books.filter((book: IBook) => book.volumeInfo.title.toLowerCase().indexOf(searchTerm) !== -1);
   }
 
+  sortByTitle(): void{
+    this.filteredBooks.sort(function(a,b) {return (a.volumeInfo.title > b.volumeInfo.title) ? 1 : ((b.volumeInfo.title > a.volumeInfo.title) ? -1 : 0);} ); 
+  }
+
+  sortByAuthor(): void{
+    this.filteredBooks.sort(function(a,b) {return (a.volumeInfo.authors > b.volumeInfo.authors) ? 1 : ((b.volumeInfo.authors > a.volumeInfo.authors) ? -1 : 0);} ); 
+  }
+
+  sortByRating(): void{
+    this.filteredBooks.sort(function(a,b) {return (a.volumeInfo.averageRating > b.volumeInfo.averageRating) ? 1 : ((b.volumeInfo.averageRating > a.volumeInfo.averageRating) ? -1 : 0);} ); 
+  }
+
+  
+
   toggleCovers() {
     if(this.coversEnabled){
       this.coversEnabled=false;

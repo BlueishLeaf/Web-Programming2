@@ -9,9 +9,9 @@
                 <i class="search icon"></i>
             </div>
             <div class="ui buttons">
-              <button class="ui button">Title</button>
-              <button class="ui button">Author</button>
-              <button class="ui button">Rating</button>
+              <button class="ui button" (click)="sortByTitle()">Title</button>
+              <button class="ui button" (click)="sortByAuthor()">Author</button>
+              <button class="ui button" (click)="sortByRating()">Rating</button>
             </div>
             <button class="ui toggle button" (click)="toggleCovers()">Toggle Covers</button>
           </div>
@@ -24,7 +24,7 @@
                       <th>Cover</th>
                       <th>Title</th>
                       <th>Author</th>
-                      <th>Rating/5</th>
+                      <th>Rating</th>
                     </tr>
                   </thead>
                   <tbody>
