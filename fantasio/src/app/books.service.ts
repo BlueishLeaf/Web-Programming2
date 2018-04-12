@@ -17,8 +17,9 @@ export class BooksService {
     return this._http.get<IResponse>(this._bookUrl).catch(this.handleError);
   }
 
-  getBook(id: string): Observable<IBook> {
-    return this.getBooks().map((response: IResponse) => response.items.find(b => b.id === id));
+  getBook(bookId: string): Observable<IResponse> {
+    this._bookUrl = 'https://www.googleapis.com/books/v1/volumes?q=id:' + bookId;
+    return this._http.get<IResponse>(this._bookUrl).catch(this.handleError);
   }
 
   handleError(err: HttpErrorResponse) {

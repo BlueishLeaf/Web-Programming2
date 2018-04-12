@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../books.service';
-import { IBook } from '../book-model/ibook';
+import { IBook, IResponse } from '../book-model/ibook';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./book-details.component.css']
 })
 export class BookDetailsComponent implements OnInit {
+  response: IResponse;
   book: IBook;
   errorMessage: string;
   pageTitle: string = "Book Details";
@@ -24,7 +25,10 @@ export class BookDetailsComponent implements OnInit {
   }
 
   getBook(id: string) {
-    this._bookService.getBook(id).subscribe(book => this.book = book, error => this.errorMessage = <any>error);
+    this._bookService.getBook(id).subscribe(response => {
+      this.response = response,
+      this.book = this.response.items[0]
+    }, error => this.errorMessage = <any>error);
   }
 
   onBack(): void {

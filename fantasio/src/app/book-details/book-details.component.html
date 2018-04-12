@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div id="content">
+<div id="content" *ngIf="book">
     <div class="ui raised very padded text container segment">
         <button id="backBtn" class="ui labeled icon button" [routerLink]="['/books']">
           <i class="arrow left icon"></i>

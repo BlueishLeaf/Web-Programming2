@@ -24,15 +24,15 @@
                       <th>Cover</th>
                       <th>Title</th>
                       <th>Author</th>
-                      <th>Rating</th>
+                      <th>Rating/5</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let book of filteredBooks">
-                      <td><img *ngIf="coversEnabled" class="ui small image" src="{{book.volumeInfo.imageLinks.smallThumbnail}}" ></td>
+                      <td><img *ngIf="coversEnabled" class="ui small image" src="{{book.volumeInfo.imageLinks.smallThumbnail}}" [routerLink]="['/books',book.id]"></td>
                       <td><a [routerLink]="['/books',book.id]">{{book.volumeInfo.title}}</a></td>
                       <td>{{book.volumeInfo.authors}}</td>
-                      <td><div class="ui rating" data-rating="{{book.volumeInfo.rating}}"></div></td>
+                      <td>{{book.volumeInfo.averageRating}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -40,4 +40,3 @@
         </div>
       </div>
 </div>
-<script type="text/javascript">$(document).ready(function(){$(".rating").rating();});</script>

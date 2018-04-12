@@ -10,4 +10,5 @@ export interface IResponse {
 export interface IVolumeInfo {
     title: string;
     description: string;
+    averageRating: number;
 }
