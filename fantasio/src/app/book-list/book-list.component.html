@@ -2,23 +2,30 @@
 <div id="content">
     <div class="ui stackable centered grid">
         <div class="four wide column">
-          <div id="filterSection" class="ui segment">
+          <div id="filterOptions" class="ui segment">
             <h1 class="ui large header">Filtering</h1>
-            <div class="ui icon input">
+            <div class="centeredBlock">
+              <div class="ui icon input">
                 <input id="searchTerm" type="text" [(ngModel)]="listFilter" placeholder="Search...">
                 <i class="search icon"></i>
+              </div>
             </div>
-            <div class="ui buttons">
-              <button class="ui button" (click)="sortByTitle()">Title</button>
-              <button class="ui button" (click)="sortByAuthor()">Author</button>
-              <button class="ui button" (click)="sortByRating()">Rating</button>
+            <div class="ui centered header">Sort By</div>
+            <div class="centeredBlock">
+              <div class="ui buttons">
+                <button class="ui button" (click)="sortByTitle()">Title</button>
+                <button class="ui button" (click)="sortByAuthor()">Author</button>
+                <button class="ui button" (click)="sortByRating()">Rating</button>
+              </div>
             </div>
-            <button class="ui toggle button" (click)="toggleCovers()">Toggle Covers</button>
+            <div class="centeredBlock">
+              <div class="ui toggle button" id="toggleBtn" (click)="toggleCovers()">Toggle Covers</div>
+            </div>
           </div>
         </div>
         <div class="six wide column">
             <div class="table-responsive">
-                <table class="ui striped table" *ngIf="books && books.length">
+                <table  id="table" class="ui striped table" *ngIf="books && books.length">
                   <thead>
                     <tr>
                       <th>Cover</th>
@@ -32,7 +39,8 @@
                       <td><img *ngIf="coversEnabled" class="ui small image" src="{{book.volumeInfo.imageLinks.smallThumbnail}}" [routerLink]="['/books',book.id]"></td>
                       <td><a [routerLink]="['/books',book.id]">{{book.volumeInfo.title}}</a></td>
                       <td>{{book.volumeInfo.authors}}</td>
-                      <td>{{book.volumeInfo.averageRating}}</td>
+                      <td *ngIf="book.volumeInfo.averageRating!=0">{{book.volumeInfo.averageRating}}<i class="star icon"></i></td>
+                      <td *ngIf="book.volumeInfo.averageRating==0">No Reviews Yet!</td>
                     </tr>
                   </tbody>
                 </table>

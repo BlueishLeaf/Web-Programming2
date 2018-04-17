@@ -1,17 +1,14 @@
 <app-header></app-header>
 <div id="content" *ngIf="book">
-    <div class="ui raised very padded text container segment">
-        <button id="backBtn" class="ui labeled icon button" [routerLink]="['/books']">
-          <i class="arrow left icon"></i>
-          Go Back
-        </button>
-        <a href="{{ book.volumeInfo.infoLink }}">
-          <button id="gbooksBtn" class="ui right labeled icon button">
-              <i class="book icon"></i>
-              View on Google Books
-          </button>
-        </a>
-        <h1 class="ui centered header">{{ book.volumeInfo.title }}</h1>
+    <div id="details" class="ui raised very padded text container segment">
+      <div class="centeredBlock">
+          <div id="backBtn" class="ui labeled icon button" [routerLink]="['/books']">
+            <i class="arrow left icon"></i>
+            Go Back
+          </div>
+      </div>
+      <h1 class="ui centered header">{{ book.volumeInfo.title }}</h1>
+
         <img class="ui centered small image" src="{{ book.volumeInfo.imageLinks.thumbnail }}">
         <h2 class="ui centered header">Some Details...</h2>
         <div class="ui list">
@@ -45,6 +42,22 @@
                 {{ book.volumeInfo.pageCount }}
               </div>
           </div>
+          <div class="item">
+            <i class="star icon"></i>
+            <div class="content" *ngIf="book.volumeInfo.averageRating!=null">
+              {{ book.volumeInfo.averageRating }}
+            </div>
+            <div class="content" *ngIf="book.volumeInfo.averageRating==null">
+              No Reviews Yet!
+          </div>
+
+        </div>
+        <div class="item">
+            <i class="book icon"></i>
+            <div class="content">
+              <a href="{{ book.volumeInfo.infoLink }}">More Details!</a>
+            </div>
+        </div>
         </div>
         <h2 class="ui centered header">What is it about?</h2>
         <p>{{ book.volumeInfo.description }}</p>

@@ -34,6 +34,7 @@ export class BookListComponent implements OnInit {
 
   ngOnInit() {
     this.getBooks();
+
   }
 
   getBooks(): void {
@@ -41,6 +42,11 @@ export class BookListComponent implements OnInit {
       this.response = response;
       this.books = this.response.items;
       this.filteredBooks = this.books;
+      this.filteredBooks.forEach(book => {
+        if(book.volumeInfo.averageRating==null){
+          book.volumeInfo.averageRating=0;
+        }
+      });
     }, error => this.errorMessage = <any>error);
   }
 
@@ -58,7 +64,7 @@ export class BookListComponent implements OnInit {
   }
 
   sortByRating(): void{
-    this.filteredBooks.sort(function(a,b) {return (a.volumeInfo.averageRating > b.volumeInfo.averageRating) ? 1 : ((b.volumeInfo.averageRating > a.volumeInfo.averageRating) ? -1 : 0);} ); 
+    this.filteredBooks.sort(function(a,b) {return (a.volumeInfo.averageRating > b.volumeInfo.averageRating) ? -1 : ((b.volumeInfo.averageRating > a.volumeInfo.averageRating) ? 1 : 0);} ); 
   }
 
   

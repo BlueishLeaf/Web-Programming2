@@ -18,6 +18,7 @@ import { HeaderComponent } from './header/header.component';
     BookListComponent,
     BookDetailsComponent,
     HeaderComponent
+    
   ],
   imports: [
     BrowserModule,

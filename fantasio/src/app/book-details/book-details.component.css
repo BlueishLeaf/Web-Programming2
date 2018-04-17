@@ -10,17 +10,31 @@ a:visited {
     margin: 0 auto;
     text-align: center;
     display: block;
+    background-color: white;
 }
 
-#backBtn {
-    text-align: left;
+#backBtn{
+    background-color: white;
 }
 
-#gbooksBtn {
-    text-align: right;
-    float: right;
+#backBtn:hover{
+    background-color: #99ccff;
+}
+
+#previewBtn:hover{
+    background-color: #99ccff;
 }
 
 #content {
-    margin-top: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.centeredBlock {
+    display: block;
+    text-align: center;
+}
+
+#details {
+    background-color: #ccffff;
 }

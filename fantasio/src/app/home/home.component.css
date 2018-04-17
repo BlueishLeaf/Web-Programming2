@@ -35,3 +35,10 @@ label {
     font-family: Ringbearer;
     src: url("../assets/fonts/RINGM___.ttf");
 }
+
+@media (max-width: 600px) { 
+        h1 {
+            font-size: 60px;
+            text-align: center;
+        }
+    }

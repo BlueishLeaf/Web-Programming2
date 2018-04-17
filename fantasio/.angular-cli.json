@@ -24,8 +24,7 @@
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
-        "../semantic/dist/semantic.min.js",
-        "../src/app/js/rating.js"
+        "../semantic/dist/semantic.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
