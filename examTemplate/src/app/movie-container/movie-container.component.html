@@ -1,0 +1,13 @@
+<div>
+  <form class="ui form">
+    <div class="field">
+      <label>Movie Title</label>
+      <input name="movie-title" placeholder="The Dark Knight Rises" type="text" #movieTitle>
+    </div>
+    <button class="ui button" type="submit" (click)="getMovie(movieTitle.value)">Get Movie</button>
+  </form>
+</div>
+<div class="ui container" *ngIf="movie">
+  <h1>{{movie.Title}}</h1>
+  <img src="{{movie.Poster}}" (click)="onClick()">
+</div>
