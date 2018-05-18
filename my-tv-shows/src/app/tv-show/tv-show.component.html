@@ -1,0 +1,31 @@
+<div class="ui grid">
+  <div class="five wide column">
+    <h3>{{tvShowDetails.Title}}</h3>
+    <img class="ui small image" src="{{tvShowDetails.Poster}}">
+  </div>
+  <div class="six wide column">
+    <div class="ui list">
+      <div class="item"><label><b>Title:</b> {{tvShowDetails.Title}}</label></div>
+      <div class="item"><label><b>Year:</b> {{tvShowDetails.Year}}</label></div>
+      <div class="item"><label><b>Released:</b> {{tvShowDetails.Released}}</label></div>
+      <div class="item"><label><b>Genre:</b> {{tvShowDetails.Genre}}</label></div>
+      <div class="item"><label><b>Seasons:</b> {{tvShowDetails.totalSeasons}}</label></div>
+    </div>
+    <div class="item"><label><b>Ratings:</b></label></div>
+    <div *ngFor="let rating of tvShowDetails.Ratings">
+      <div class="item"><label>{{rating.Source}}</label></div>
+      <div class="item"><label>{{rating.Value}}</label></div>
+    </div>
+    <div *ngIf="tvShowDetails.MyReview" class="item">
+      <label>My Review: {{tvShowDetails.MyReview}}</label>
+    </div>
+  </div>
+  <div class="five wide column">
+    <button class="ui primary button" (click)="onRemove()">Remove from Favourites</button>
+    <br><br>
+    <textarea placeholder="Add a short review" #myReview></textarea>
+    <br><br>
+    <button class="ui primary button" (click)="addReview(myReview.value)">Add Your Review</button>
+
+  </div>
+</div>

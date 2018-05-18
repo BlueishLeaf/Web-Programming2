@@ -1,0 +1,34 @@
+<div class="ui raised segment">
+  <h1 class="ui header">
+    <img class="ui image" src="../assets/images/tv-shows.jpg">
+    <div class="content">
+      My TV Shows Library
+    </div>
+  </h1>
+  <form class="ui form">
+    <div class="field">
+      <label>TV Show Title</label>
+      <input name="tv-title" placeholder="Westworld" type="text" #tvShowName>
+    </div>
+    <button class="ui primary button" type="submit" (click)="getTvShowDetails(tvShowName.value)">Get the TV Show Details</button>
+  </form>
+</div>
+<div class="ui form segment" *ngIf="tvShowData">
+  <div class="ui grid">
+    <div class=" eight wide column">
+      <h1>{{tvShowData.Title}}</h1>
+      <img src="{{tvShowData.Poster}}" height="{{posterHeight}}">
+    </div>
+    <div class=" eight wide column">
+      <button class="ui primary button" (click)="addToFavourites()">Add to Favourites</button>
+      <button class="ui button" (click)="cancel()">Cancel</button>
+    </div>
+  </div>
+</div>
+<div class="ui raised segment" *ngIf="tvShows.length>0">
+  <h1>Favourites</h1>
+  <div class="ui raised segment" *ngFor="let tvShow of tvShows">
+    <app-tv-show [tvShowDetails]="tvShow" (removeTvShow)="removeFromFavourites($event)"></app-tv-show>
+  </div>
+</div>
+
